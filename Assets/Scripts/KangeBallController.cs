@@ -18,6 +18,9 @@ public class KangeBallController : MonoBehaviour,Interface
                     case 0:
                         Debug.Log("当たった 0");
                         break;
+                    case 5:
+                        Debug.Log("当たった"+kangeRandom);
+                        break;
                 }
                 break;
             case 1:
@@ -25,6 +28,9 @@ public class KangeBallController : MonoBehaviour,Interface
                 {
                     case 1:
                         Debug.Log("当たった 1");
+                        break;
+                    case 6:
+                        Debug.Log("当たった" + kangeRandom);
                         break;
                 }
                 break;
@@ -34,6 +40,9 @@ public class KangeBallController : MonoBehaviour,Interface
                     case 2:
                         Debug.Log("当たった 2");
                         break;
+                    case 7:
+                        Debug.Log("当たった" + kangeRandom);
+                        break;
                 }
                 break;
             case 3:
@@ -42,6 +51,9 @@ public class KangeBallController : MonoBehaviour,Interface
                     case 3:
                         Debug.Log("当たった 3");
                         break;
+                    case 8:
+                        Debug.Log("当たった" + kangeRandom);
+                        break;
                 }
                 break;
             case 4:
@@ -49,6 +61,9 @@ public class KangeBallController : MonoBehaviour,Interface
                 {
                     case 4:
                         Debug.Log("当たった 4");
+                        break;
+                    case 9:
+                        Debug.Log("当たった" + kangeRandom);
                         break;
                 }
                 break;
@@ -59,8 +74,9 @@ public class KangeBallController : MonoBehaviour,Interface
     void Start()
     {
         sr = gameObject.GetComponent<SpriteRenderer>();
-        kangeRandom = Random.Range(0, 5);
+        kangeRandom = Random.Range(0, 10);
         sr.sprite = kangis[kangeRandom];
+        Debug.Log(kangeRandom);
     }
 
     // Update is called once per frame
