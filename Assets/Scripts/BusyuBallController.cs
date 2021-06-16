@@ -7,26 +7,29 @@ public class BusyuBallController : MonoBehaviour
     public Sprite[] busyuS;//部首の画像保存用
     SpriteRenderer SR;//SpriteRenderer保存用変数
     private int RandomBusyu;//
-    private float x, y;
+    private float x, y, Xbusyu, Ybusyu;
     private Vector2 startPos;
     private Vector2 RDestroyPos,LDestroyPos;//指定範囲から出るとオブジェクトを消す値を保存する
+    public bool suwipSwitch;
     void Mouse()//スワイプ操作
     {
         //スワイプの長さを求める
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0)&& suwipSwitch==true)
         {
             //マウスをクリックした座標
             startPos = Input.mousePosition;
-        }else if (Input.GetMouseButtonUp(0))
+        }else if (Input.GetMouseButtonUp(0) && suwipSwitch == true)
         {
             //マウスを離した座標
             Vector2 endPos = Input.mousePosition;
-            float Xbusyu = endPos.x - startPos.x;
-            float Ybusyu = endPos.y - startPos.y;
+            Xbusyu = endPos.x - startPos.x;
+            Ybusyu = endPos.y - startPos.y;
 
             //スワイプの長さを初速度に変換する
             x = Xbusyu / 500.0f;
             y = Ybusyu / 500.0f;
+
+            suwipSwitch = false;
         }
         transform.Translate(x, y, 0);
     }
@@ -40,6 +43,7 @@ public class BusyuBallController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        suwipSwitch = false;
         SR = gameObject.GetComponent<SpriteRenderer>();//自分のゲームオブジェクトからSpriteRendererを取得
         RandomBusyu = Random.Range(0, 5);//どの部首をだすかの数値をランダムにだす
         SR.sprite = busyuS[RandomBusyu];//RandomBusyuと同じ数値のbusyuSに保存したsprite画像をSRのspriteに保存する
