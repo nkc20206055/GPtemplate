@@ -11,8 +11,10 @@ public class BusyuBallController : MonoBehaviour
     private Vector2 startPos;
     private Vector2 RDestroyPos,LDestroyPos;//指定範囲から出るとオブジェクトを消す値を保存する
     public bool suwipSwitch;
+    private bool DestroySwitch;
     void Mouse()//スワイプ操作
     {
+        DestroySwitch = true;
         //スワイプの長さを求める
         if (Input.GetMouseButtonDown(0)&& suwipSwitch==true)
         {
@@ -35,21 +37,27 @@ public class BusyuBallController : MonoBehaviour
     }
     void Destroy()
     {
-        if (transform.position.x>=RDestroyPos.x|| transform.position.y >= RDestroyPos.y|| transform.position.x <= LDestroyPos.x)
-        {
-            Destroy(gameObject);
+        if (DestroySwitch==true) {
+            if (transform.position.x >= RDestroyPos.x || transform.position.y >= RDestroyPos.y)
+            {
+                Destroy(gameObject);
+            }else if (transform.position.x <= LDestroyPos.x|| transform.position.y <= LDestroyPos.y)
+            {
+                Destroy(gameObject);
+            }
         }
     }
     // Start is called before the first frame update
     void Start()
     {
-        suwipSwitch = false;
+        DestroySwitch = false;
+        //suwipSwitch = false;
         SR = gameObject.GetComponent<SpriteRenderer>();//自分のゲームオブジェクトからSpriteRendererを取得
         RandomBusyu = Random.Range(0, 5);//どの部首をだすかの数値をランダムにだす
         SR.sprite = busyuS[RandomBusyu];//RandomBusyuと同じ数値のbusyuSに保存したsprite画像をSRのspriteに保存する
         //Debug.Log(RandomBusyu);
-        RDestroyPos = new Vector2(6.5f, 17f);
-        LDestroyPos = new Vector2(-6.5f,16.5f);
+        RDestroyPos = new Vector2(9f, 17f);
+        LDestroyPos = new Vector2(-9f,-1f);
 
     }
 
