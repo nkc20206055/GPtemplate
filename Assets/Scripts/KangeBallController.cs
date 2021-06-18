@@ -17,9 +17,11 @@ public class KangeBallController : MonoBehaviour,Interface
                 {
                     case 0:
                         Debug.Log("当たった 0");
+                        GODestroy();
                         break;
                     case 5:
                         Debug.Log("当たった"+kangeRandom);
+                        GODestroy();
                         break;
                 }
                 break;
@@ -28,9 +30,12 @@ public class KangeBallController : MonoBehaviour,Interface
                 {
                     case 1:
                         Debug.Log("当たった 1");
+                        GODestroy();
                         break;
                     case 6:
-                        Debug.Log("当たった" + kangeRandom);
+                        Debug.Log("当たった" + kangeRandom); 
+                        GODestroy();
+
                         break;
                 }
                 break;
@@ -39,8 +44,11 @@ public class KangeBallController : MonoBehaviour,Interface
                 {
                     case 2:
                         Debug.Log("当たった 2");
+                        GODestroy();
+
                         break;
                     case 7:
+                        GODestroy();
                         Debug.Log("当たった" + kangeRandom);
                         break;
                 }
@@ -50,9 +58,11 @@ public class KangeBallController : MonoBehaviour,Interface
                 {
                     case 3:
                         Debug.Log("当たった 3");
+                        GODestroy();
                         break;
                     case 8:
                         Debug.Log("当たった" + kangeRandom);
+                        GODestroy();
                         break;
                 }
                 break;
@@ -61,14 +71,19 @@ public class KangeBallController : MonoBehaviour,Interface
                 {
                     case 4:
                         Debug.Log("当たった 4");
+                        GODestroy();
                         break;
                     case 9:
                         Debug.Log("当たった" + kangeRandom);
+                        GODestroy();
                         break;
                 }
                 break;
         }
-            
+    }
+    void GODestroy()
+    {
+        Destroy(gameObject);
     }
     // Start is called before the first frame update
     void Start()

@@ -12,15 +12,16 @@ public class BusyuBallController : MonoBehaviour
     private Vector2 RDestroyPos,LDestroyPos;//指定範囲から出るとオブジェクトを消す値を保存する
     public bool suwipSwitch;
     private bool DestroySwitch;
+    private bool Mousetouch;
     void Mouse()//スワイプ操作
     {
         DestroySwitch = true;
         //スワイプの長さを求める
-        if (Input.GetMouseButtonDown(0)&& suwipSwitch==true)
+        if (Input.GetMouseButtonDown(0)&& suwipSwitch==true&& Mousetouch==true)
         {
             //マウスをクリックした座標
             startPos = Input.mousePosition;
-        }else if (Input.GetMouseButtonUp(0) && suwipSwitch == true)
+        }else if (Input.GetMouseButtonUp(0) && suwipSwitch == true && Mousetouch == true)
         {
             //マウスを離した座標
             Vector2 endPos = Input.mousePosition;
@@ -66,6 +67,12 @@ public class BusyuBallController : MonoBehaviour
     {
         Mouse();
         Destroy();
+    }
+
+     void OnMouseEnter()//マウスが乗っている間、呼び出され続ける
+    {
+        Debug.Log("のっている");
+        Mousetouch = true;
     }
     void OnTriggerEnter2D(Collider2D collision)
     {
