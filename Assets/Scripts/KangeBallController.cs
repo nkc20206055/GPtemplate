@@ -91,7 +91,7 @@ public class KangeBallController : MonoBehaviour,Interface
         sr = gameObject.GetComponent<SpriteRenderer>();
         kangeRandom = Random.Range(0, 10);
         sr.sprite = kangis[kangeRandom];
-        Debug.Log(kangeRandom);
+        //Debug.Log(kangeRandom);
     }
 
     // Update is called once per frame
