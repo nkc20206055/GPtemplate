@@ -1,24 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class gamedirctor : MonoBehaviour
 {
-    public GameObject busyuBoll;
-    GameObject[] busyuPrefab;
+    Text t;
+    public float puraspoint,SavePoint;
     // Start is called before the first frame update
     void Start()
     {
-        busyuPrefab = new GameObject[5];
-        for (int i=0;busyuPrefab.Length>i;i++)
-        {
-            Debug.Log(i);
-        }
+        SavePoint = 0;
+        t = GameObject.Find("PointText").GetComponent<Text>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        t.text = SavePoint.ToString();
     }
 }

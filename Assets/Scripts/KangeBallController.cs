@@ -6,6 +6,8 @@ public class KangeBallController : MonoBehaviour,Interface
 {
     public Sprite[] kangis;
     SpriteRenderer sr;
+    gamedirctor gd;
+    BallGeneratorC BGc;
     private int kangeRandom;
     void Interface.Dameg(int i)
     {
@@ -13,73 +15,62 @@ public class KangeBallController : MonoBehaviour,Interface
         switch (i) 
         {
             case 0:
-                switch (kangeRandom)
+                if (kangeRandom==0|| kangeRandom==5)
                 {
-                    case 0:
-                        Debug.Log("当たった 0");
-                        GODestroy();
-                        break;
-                    case 5:
-                        Debug.Log("当たった"+kangeRandom);
-                        GODestroy();
-                        break;
+                    Debug.Log("当たった" + kangeRandom);
+                    GamePoint();
+                    GODestroy();
                 }
                 break;
             case 1:
-                switch (kangeRandom)
+                if (kangeRandom == 1 || kangeRandom == 6)
                 {
-                    case 1:
-                        Debug.Log("当たった 1");
-                        GODestroy();
-                        break;
-                    case 6:
-                        Debug.Log("当たった" + kangeRandom); 
-                        GODestroy();
-
-                        break;
+                    Debug.Log("当たった" + kangeRandom);
+                    GamePoint();
+                    GODestroy();
                 }
                 break;
             case 2:
-                switch (kangeRandom)
+                if (kangeRandom == 2 || kangeRandom == 7)
                 {
-                    case 2:
-                        Debug.Log("当たった 2");
-                        GODestroy();
-
-                        break;
-                    case 7:
-                        GODestroy();
-                        Debug.Log("当たった" + kangeRandom);
-                        break;
+                    Debug.Log("当たった" + kangeRandom);
+                    GamePoint();
+                    GODestroy();
                 }
                 break;
             case 3:
-                switch (kangeRandom)
+                if (kangeRandom == 3 || kangeRandom == 8)
                 {
-                    case 3:
-                        Debug.Log("当たった 3");
-                        GODestroy();
-                        break;
-                    case 8:
-                        Debug.Log("当たった" + kangeRandom);
-                        GODestroy();
-                        break;
+                    Debug.Log("当たった" + kangeRandom);
+                    GamePoint();
+                    GODestroy();
                 }
                 break;
             case 4:
-                switch (kangeRandom)
+                if (kangeRandom == 4 || kangeRandom == 9)
                 {
-                    case 4:
-                        Debug.Log("当たった 4");
-                        GODestroy();
-                        break;
-                    case 9:
-                        Debug.Log("当たった" + kangeRandom);
-                        GODestroy();
-                        break;
+                    Debug.Log("当たった" + kangeRandom);
+                    GamePoint();
+                    GODestroy();
                 }
                 break;
         }
+    }
+    void GamePoint()
+    {
+        Vector3 i = transform.position;
+        gd.SavePoint += 50*i.y;
+        Debug.Log(gd.SavePoint);
+    }
+    void Randmukangi()
+    {
+        while (BGc.SaveKangiNumber == kangeRandom)
+        {
+            int o = Random.Range(0, 5);
+            kangeRandom = o;
+        }
+        BGc.SaveKangiNumber = kangeRandom;
+        Debug.Log(BGc.SaveKangiNumber);
     }
     void GODestroy()
     {
@@ -89,7 +80,10 @@ public class KangeBallController : MonoBehaviour,Interface
     void Start()
     {
         sr = gameObject.GetComponent<SpriteRenderer>();
+        gd = GameObject.Find("GameDirector").GetComponent<gamedirctor>();
+        BGc = GameObject.Find("BallGenerator").GetComponent<BallGeneratorC>();
         kangeRandom = Random.Range(0, 10);
+        Randmukangi();
         sr.sprite = kangis[kangeRandom];
         //Debug.Log(kangeRandom);
     }

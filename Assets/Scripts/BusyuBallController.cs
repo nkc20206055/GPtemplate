@@ -6,13 +6,24 @@ public class BusyuBallController : MonoBehaviour
 {
     public Sprite[] busyuS;//部首の画像保存用
     SpriteRenderer SR;//SpriteRenderer保存用変数
-    private int RandomBusyu;//
+    BallGeneratorC BGC;
+    public int RandomBusyu;//
     private float x, y, Xbusyu, Ybusyu;
     private Vector2 startPos;
     private Vector2 RDestroyPos,LDestroyPos;//指定範囲から出るとオブジェクトを消す値を保存する
     public bool suwipSwitch;
     private bool DestroySwitch;
     private bool Mousetouch;
+    void RBusyu()
+    {
+        while (BGC.SaveBusyuNumber == RandomBusyu)
+        {
+            int o = Random.Range(0, 5);
+            RandomBusyu = o;
+        }
+        BGC.SaveBusyuNumber = RandomBusyu;
+        Debug.Log(BGC.SaveBusyuNumber);
+    }
     void Mouse()//スワイプ操作
     {
         DestroySwitch = true;
@@ -53,8 +64,10 @@ public class BusyuBallController : MonoBehaviour
     {
         DestroySwitch = false;
         //suwipSwitch = false;
+        BGC = GameObject.Find("BallGenerator").GetComponent<BallGeneratorC>();
         SR = gameObject.GetComponent<SpriteRenderer>();//自分のゲームオブジェクトからSpriteRendererを取得
         RandomBusyu = Random.Range(0, 5);//どの部首をだすかの数値をランダムにだす
+        RBusyu();
         SR.sprite = busyuS[RandomBusyu];//RandomBusyuと同じ数値のbusyuSに保存したsprite画像をSRのspriteに保存する
         //Debug.Log(RandomBusyu);
         RDestroyPos = new Vector2(9f, 17f);
@@ -71,7 +84,7 @@ public class BusyuBallController : MonoBehaviour
 
      void OnMouseEnter()//マウスが乗っている間、呼び出され続ける
     {
-        Debug.Log("のっている");
+        //Debug.Log("のっている");
         Mousetouch = true;
     }
     void OnTriggerEnter2D(Collider2D collision)

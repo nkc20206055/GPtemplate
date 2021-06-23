@@ -10,6 +10,7 @@ public class BallGeneratorC : MonoBehaviour
     GameObject[] kangiballs = new GameObject[5];
     Vector3[] KangiPoss=new Vector3[5];
     BusyuBallController BBc;
+    public int SaveBusyuNumber, SaveKangiNumber;
     //private bool 
     //Vector3 busyuPos;
     void busyuBallController()
@@ -63,13 +64,13 @@ public class BallGeneratorC : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        BusyuBallController BBC = null;
+        //BusyuBallController BBC = null;
         //busyuPos = new Vector3(0, 0, 0);
         float busyuPosx = 0;
         //busyuballs = new GameObject[5];
         for (int i = 0; busyuballs.Length > i; i++)
         {
-            Debug.Log(i);
+            //Debug.Log(i);
             busyuballs[i] = Instantiate(busyuball) as GameObject;
             BBc = busyuballs[i].GetComponent<BusyuBallController>();
             if (i <= 0)
@@ -81,7 +82,7 @@ public class BallGeneratorC : MonoBehaviour
             {
                 BBc.suwipSwitch = false;
             }
-            Debug.Log(BBc.suwipSwitch);
+            //Debug.Log(BBc.suwipSwitch);
             busyuballs[i].transform.position = new Vector3(busyuPosx, 0, 0);         
             busyuPosx += 2f;
         }
@@ -125,7 +126,7 @@ public class BallGeneratorC : MonoBehaviour
             Savekangi.transform.position = new Vector3(Rx, Ry, 0);
             kangiballs[i] = Savekangi;
             KangiPoss[i] = Savekangi.transform.position;
-            Debug.Log(KangiPoss[i]);
+            //Debug.Log(KangiPoss[i]);
         }
 
         //Object[] allGameObject = Resources.FindObjectsOfTypeAll(typeof(GameObject));
