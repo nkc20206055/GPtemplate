@@ -8,7 +8,7 @@ public class KangeBallController : MonoBehaviour,Interface
     SpriteRenderer sr;
     gamedirctor gd;
     BallGeneratorC BGc;
-    private int kangeRandom;
+    public int kangeRandom;
     void Interface.Dameg(int i)
     {
         //Debug.Log(i);
@@ -64,13 +64,15 @@ public class KangeBallController : MonoBehaviour,Interface
     }
     void Randmukangi()
     {
+        int o;
         while (BGc.SaveKangiNumber == kangeRandom)
         {
-            int o = Random.Range(0, 5);
+            o = Random.Range(0, 10);
+            //Debug.Log(o);
             kangeRandom = o;
         }
         BGc.SaveKangiNumber = kangeRandom;
-        Debug.Log(BGc.SaveKangiNumber);
+        //Debug.Log(BGc.SaveKangiNumber);
     }
     void GODestroy()
     {
@@ -83,6 +85,7 @@ public class KangeBallController : MonoBehaviour,Interface
         gd = GameObject.Find("GameDirector").GetComponent<gamedirctor>();
         BGc = GameObject.Find("BallGenerator").GetComponent<BallGeneratorC>();
         kangeRandom = Random.Range(0, 10);
+        Debug.Log(kangeRandom);
         Randmukangi();
         sr.sprite = kangis[kangeRandom];
         //Debug.Log(kangeRandom);

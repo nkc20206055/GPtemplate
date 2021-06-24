@@ -22,7 +22,7 @@ public class BusyuBallController : MonoBehaviour
             RandomBusyu = o;
         }
         BGC.SaveBusyuNumber = RandomBusyu;
-        Debug.Log(BGC.SaveBusyuNumber);
+        //Debug.Log(BGC.SaveBusyuNumber);
     }
     void Mouse()//スワイプ操作
     {

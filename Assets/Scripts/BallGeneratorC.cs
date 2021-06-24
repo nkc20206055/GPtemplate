@@ -6,6 +6,7 @@ public class BallGeneratorC : MonoBehaviour
 {
     public GameObject busyuball;//BusyuBallプレハブの保存用変数
     public GameObject kangiball;//KangeBallプレハブの保存用変数
+    int[] kangeNamebers = new int[5];
     GameObject[] busyuballs = new GameObject[5];//生成したBusyuBallを保存する配列
     GameObject[] kangiballs = new GameObject[5];
     Vector3[] KangiPoss=new Vector3[5];
@@ -123,6 +124,9 @@ public class BallGeneratorC : MonoBehaviour
                 //t = 4;
             } while (t >= 4);
             GameObject Savekangi = Instantiate(kangiball);
+            KangeBallController KBC = Savekangi.GetComponent<KangeBallController>();
+            kangeNamebers[i] = KBC.kangeRandom;
+            Debug.Log(KBC.kangeRandom);
             Savekangi.transform.position = new Vector3(Rx, Ry, 0);
             kangiballs[i] = Savekangi;
             KangiPoss[i] = Savekangi.transform.position;
