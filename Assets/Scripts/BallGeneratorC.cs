@@ -12,13 +12,14 @@ public class BallGeneratorC : MonoBehaviour
     Vector3[] KangiPoss=new Vector3[5];
     BusyuBallController BBc;
     public int SaveBusyuNumber, SaveKangiNumber;
+    bool kangeN;
     //private bool 
     //Vector3 busyuPos;
     void busyuBallController()
     {
         if (busyuballs[0] == null)//busyuballを撃ち終わったとき
         {
-            Debug.Log("無い");
+            //Debug.Log("無い");
             float busyuPosx = 2;
             for (int i = 1; busyuballs.Length > i; i++)
             {
@@ -47,20 +48,38 @@ public class BallGeneratorC : MonoBehaviour
 
     void kangeBallController()
     {
+        GameObject Savekangi;
+        int t = 0;
+        bool m = false;
         for (int i=0;i<kangiballs.Length;i++) {
             //Debug.Log(kangiballs[i]);
             float Px, Py;
             if (kangiballs[i] == null)
             {
-                Debug.Log("なくなった " + i);
+                t = i;
+                m = true;
+                //Debug.Log("なくなった " + i);
                 Px = Random.Range(-7, 8);
                 Py = Random.Range(6, 15);
-                GameObject Savekangi = Instantiate(kangiball);
+                Savekangi = Instantiate(kangiball);
+                //KangeBallController KBC = Savekangi.GetComponent<KangeBallController>();
+                //Debug.Log(KBC.kangeRandom);
                 Savekangi.transform.position = new Vector3(Px, Py, 0);
                 kangiballs[i] = Savekangi;
                 KangiPoss[i] = Savekangi.transform.position;
             }
+            //Debug.Log(KangiPoss[i]);
         }
+
+        //for (int i = 0; i < kangiballs.Length; i++)
+        //{
+        //    if (i == t&&m==true)
+        //    {
+        //        KangeBallController KBC = kangiballs[t].GetComponent<KangeBallController>();
+        //        Debug.Log(KBC.kangeRandom);
+        //        m = false;
+        //    }
+        //}
     }
     // Start is called before the first frame update
     void Start()
@@ -124,14 +143,16 @@ public class BallGeneratorC : MonoBehaviour
                 //t = 4;
             } while (t >= 4);
             GameObject Savekangi = Instantiate(kangiball);
-            KangeBallController KBC = Savekangi.GetComponent<KangeBallController>();
-            kangeNamebers[i] = KBC.kangeRandom;
-            Debug.Log(KBC.kangeRandom);
+            //KangeBallController KBC = Savekangi.GetComponent<KangeBallController>();
+            //kangeNamebers[i] = KBC.kangeRandom;
+            //Debug.Log(KBC.kangeRandom);
             Savekangi.transform.position = new Vector3(Rx, Ry, 0);
             kangiballs[i] = Savekangi;
             KangiPoss[i] = Savekangi.transform.position;
             //Debug.Log(KangiPoss[i]);
         }
+
+        kangeN = true;
 
         //Object[] allGameObject = Resources.FindObjectsOfTypeAll(typeof(GameObject));
         //// 取得したオブジェクトの名前を表示
@@ -155,6 +176,17 @@ public class BallGeneratorC : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (kangeN == true)
+        {
+            for (int i = 0; i < kangiballs.Length; i++)
+            {
+                GameObject os = kangiballs[i];
+                KangeBallController KBC = os.GetComponent<KangeBallController>();
+                kangeNamebers[i] = KBC.kangeRandom;
+                //Debug.Log(kangiballs[i] + "" + kangeNamebers[i]);
+            }
+            kangeN = false;
+        }
         busyuBallController();
         kangeBallController();
     }
