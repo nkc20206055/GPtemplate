@@ -178,13 +178,19 @@ public class BallGeneratorC : MonoBehaviour
     {
         if (kangeN == true)
         {
-            for (int i = 0; i < kangiballs.Length; i++)
+            for (int i = 0; i < kangiballs.Length; i++)//今あるkangiballs内のオブジェクトのkangeRadndomを保存する
             {
                 GameObject os = kangiballs[i];
                 KangeBallController KBC = os.GetComponent<KangeBallController>();
                 kangeNamebers[i] = KBC.kangeRandom;
                 //Debug.Log(kangiballs[i] + "" + kangeNamebers[i]);
             }
+
+            for (int j=0;j<kangiballs.Length;j++)
+            {
+
+            }
+
             kangeN = false;
         }
         busyuBallController();
