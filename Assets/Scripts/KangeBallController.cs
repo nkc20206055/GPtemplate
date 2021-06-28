@@ -79,6 +79,11 @@ public class KangeBallController : MonoBehaviour,Interface
             spriteChange = false;
         }
     }
+    public void spriteChangeS(int i)
+    {
+        kangeRandom = i;
+        sr.sprite = kangis[i];
+    }
     void GODestroy()
     {
         Destroy(gameObject);
