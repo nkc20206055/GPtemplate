@@ -123,3 +123,16 @@ MonoBehaviour:
   - {fileID: 2303844853823491059, guid: 398adea745b83494697908fb1292affe, type: 3}
   - {fileID: 621097684425295106, guid: 398adea745b83494697908fb1292affe, type: 3}
   - {fileID: 3172013536658256978, guid: 398adea745b83494697908fb1292affe, type: 3}
+  Completekanges:
+  - {fileID: -6479155819782089069, guid: c17bd0c44a7630f41a85094f5a4e83c3, type: 3}
+  - {fileID: -1523193668243597469, guid: 9cbc6919b35d809468f69f6ef523c115, type: 3}
+  - {fileID: -4443684376282601389, guid: 0948f501f81e7e24ca6aee9f6ac9b6cc, type: 3}
+  - {fileID: 319005901203701364, guid: e03e81cf2bde19e498c70ec30983f424, type: 3}
+  - {fileID: -75739063563194620, guid: 68ed3e07251dc5b4b8d25e6761dfad47, type: 3}
+  - {fileID: -3433249477796869570, guid: 683c22d1ac3feff4ca36600705eb93f8, type: 3}
+  - {fileID: -3621304854841044518, guid: ab67d30247761e740b3a1c1300be3fd4, type: 3}
+  - {fileID: 4169801725475471114, guid: 192bb4c397c562b4e8ed5e77d18d2c85, type: 3}
+  - {fileID: 1971147898549694399, guid: 44e7cb7c8cbdec444b72d08e7b37d43e, type: 3}
+  - {fileID: 574647695959137235, guid: 108450323e0997f4ea685120822efe07, type: 3}
+  kangeRandom: 0
+  spriteChange: 0

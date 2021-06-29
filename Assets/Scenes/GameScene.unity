@@ -658,6 +658,11 @@ MonoBehaviour:
     type: 3}
   kangiball: {fileID: 146036676049777803, guid: 0df1966f2d9c4b440ac246b2fc031f2c,
     type: 3}
+  kangeNamebers: 0000000000000000000000000000000000000000
+  SaveBusyuNumber: 0
+  SaveKangiNumber: 0
+  kangeN: 0
+  spriteR: 0
 --- !u!4 &1667278749
 Transform:
   m_ObjectHideFlags: 0

@@ -278,14 +278,14 @@ public class BallGeneratorC : MonoBehaviour
 
             kangeN = false;
         }
-        for (int v=0;v<kangiballs.Length;v++)
-        {
-            GameObject go = kangiballs[v];
-            KangeBallController kbc = go.GetComponent<KangeBallController>();
-            kangeNamebers[v] = kbc.kangeRandom;
-            Debug.Log(kangeNamebers[v]);
-        }
+        //for (int v=0;v<kangiballs.Length;v++)
+        //{
+        //    GameObject go = kangiballs[v];
+        //    KangeBallController kbc = go.GetComponent<KangeBallController>();
+        //    kangeNamebers[v] = kbc.kangeRandom;
+        //    Debug.Log(kangeNamebers[v]);
+        //}
         busyuBallController();
-        //kangeBallController();
+        kangeBallController();
     }
 }
