@@ -97,8 +97,15 @@ public class BallGeneratorC : MonoBehaviour
 
             if (spriteR == true)
             {
-                Savekangi = kangiballs[i];
-                Debug.Log(Savekangi+" "+i);
+                kBallNamberandPosSave();
+                //Savekangi = kangiballs[i];
+                //Debug.Log(Savekangi+" "+i);
+
+                for (int l=0;l<KangiPoss.Length ;l++)
+                {
+                    Debug.Log(kangiballs[l]+" "+ kangeNamebers[l] + " "+KangiPoss[l]);
+                }
+
                 spriteR = false;
             }
             
@@ -113,6 +120,16 @@ public class BallGeneratorC : MonoBehaviour
         //        m = false;
         //    }
         //}
+        }
+    }
+    void kBallNamberandPosSave()//KangeBallの座標と変化したときの番号を再設定
+    {
+        for (int v = 0; v < kangiballs.Length; v++)
+        {
+            GameObject go = kangiballs[v];
+            KangeBallController kbc = go.GetComponent<KangeBallController>();
+            kangeNamebers[v] = kbc.kangeRandom;
+            Debug.Log(kangeNamebers[v]);
         }
     }
     // Start is called before the first frame update
@@ -211,7 +228,7 @@ public class BallGeneratorC : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (kangeN == true)
+        if (kangeN == true)//kangiballsのkangeRandom番号と座標を保存
         {
             for (int i = 0; i < kangiballs.Length; i++)//今あるkangiballs内のオブジェクトのkangeRadndomを保存する
             {
@@ -278,14 +295,9 @@ public class BallGeneratorC : MonoBehaviour
 
             kangeN = false;
         }
-        //for (int v=0;v<kangiballs.Length;v++)
-        //{
-        //    GameObject go = kangiballs[v];
-        //    KangeBallController kbc = go.GetComponent<KangeBallController>();
-        //    kangeNamebers[v] = kbc.kangeRandom;
-        //    Debug.Log(kangeNamebers[v]);
-        //}
         busyuBallController();
         kangeBallController();
+        //kBallNamberandPosSave();
+
     }
 }

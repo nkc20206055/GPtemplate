@@ -88,7 +88,7 @@ public class KangeBallController : MonoBehaviour,Interface
     }
     void GODestroy()
     {
-        Debug.Log("死んだ");
+        //Debug.Log("死んだ");
         sr.sprite = Completekanges[kangeRandom];     
         Count+=1*Time.deltaTime;
         if (Count>=MaxCount) {
