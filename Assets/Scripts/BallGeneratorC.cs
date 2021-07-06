@@ -101,10 +101,10 @@ public class BallGeneratorC : MonoBehaviour
                 //Savekangi = kangiballs[i];
                 //Debug.Log(Savekangi+" "+i);
 
-                for (int l=0;l<KangiPoss.Length ;l++)
-                {
-                    Debug.Log(kangiballs[l]+" "+ kangeNamebers[l] + " "+KangiPoss[l]);
-                }
+                //for (int l=0;l<KangiPoss.Length ;l++)
+                //{
+                //    Debug.Log(kangiballs[l]+" "+ kangeNamebers[l] + " "+KangiPoss[l]);
+                //}
 
                 spriteR = false;
             }
@@ -127,6 +127,8 @@ public class BallGeneratorC : MonoBehaviour
         for (int v = 0; v < kangiballs.Length; v++)
         {
             GameObject go = kangiballs[v];
+            KangiPoss[v] = go.transform.position;
+            Debug.Log(KangiPoss[v]);
             KangeBallController kbc = go.GetComponent<KangeBallController>();
             kangeNamebers[v] = kbc.kangeRandom;
             Debug.Log(kangeNamebers[v]);
