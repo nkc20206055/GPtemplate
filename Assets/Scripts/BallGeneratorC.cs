@@ -12,7 +12,9 @@ public class BallGeneratorC : MonoBehaviour
     Vector3[] KangiPoss=new Vector3[5];
     BusyuBallController BBc;
     public int SaveBusyuNumber, SaveKangiNumber;
-    public bool kangeN, spriteR;
+    public bool kangeN, spriteR,changeSwithc;
+    int t;
+    int[] Savekange = new int[5];
     //private bool 
     //Vector3 busyuPos;
     void busyuBallController()
@@ -49,7 +51,7 @@ public class BallGeneratorC : MonoBehaviour
     void kangeBallController()//KangeBallが消えた場合
     {
         GameObject Savekangi;
-        int t = 0;
+        t = 0;
         int[] SaveNumber=new int[5];//kangeNamebersを保存する変数
         //for (int i=0;i<SaveNumber.Length;i++)
         //{
@@ -80,13 +82,18 @@ public class BallGeneratorC : MonoBehaviour
                 //    kangeNamebers[i] = KBC.kangeRandom;
                 //    SaveNumber[i] = kangeNamebers[i];
                 //}
-                t = i;
+
+                Savekange[t] = i;//どの番号のKangeBallがないかを番号で保存
+                t++;
+
                 //m = true;
                 //Debug.Log("なくなった " + i);
                 Px = Random.Range(-7, 8);
                 Py = Random.Range(6, 15);
                 Savekangi = Instantiate(kangiball);
-                //KangeBallController KBC = Savekangi.GetComponent<KangeBallController>();
+                KangeBallController KBC = Savekangi.GetComponent<KangeBallController>();
+                //Savekange[t] = KBC.kangeRandom;
+                //t = i;
                 //Debug.Log(KBC.kangeRandom);
                 Savekangi.transform.position = new Vector3(Px, Py, 0);
                 kangiballs[i] = Savekangi;
@@ -97,14 +104,17 @@ public class BallGeneratorC : MonoBehaviour
 
             if (spriteR == true)
             {
+
+                kBallNamberandPosSave();
+                newChangeKangeball();
                 kBallNamberandPosSave();
                 //Savekangi = kangiballs[i];
                 //Debug.Log(Savekangi+" "+i);
 
-                //for (int l=0;l<KangiPoss.Length ;l++)
-                //{
-                //    Debug.Log(kangiballs[l]+" "+ kangeNamebers[l] + " "+KangiPoss[l]);
-                //}
+                for (int l = 0; l < KangiPoss.Length; l++)
+                {
+                    Debug.Log(kangiballs[l] + " " + kangeNamebers[l] + " " + KangiPoss[l]);
+                }
 
                 spriteR = false;
             }
@@ -128,10 +138,85 @@ public class BallGeneratorC : MonoBehaviour
         {
             GameObject go = kangiballs[v];
             KangiPoss[v] = go.transform.position;
-            Debug.Log(KangiPoss[v]);
+            //Debug.Log(KangiPoss[v]);
             KangeBallController kbc = go.GetComponent<KangeBallController>();
             kangeNamebers[v] = kbc.kangeRandom;
-            Debug.Log(kangeNamebers[v]);
+            //Debug.Log(kangeNamebers[v]);
+        }
+
+        {
+            //changeSwithc = true;
+            //int tt = 0,savek=0;
+            //for (int i=0;i<kangiballs.Length;i++)
+            //{
+            //    GameObject tyngeGO = kangiballs[i];
+            //    //漢字を調べる
+            //    KangeBallController KBC = tyngeGO.GetComponent<KangeBallController>();
+            //    while (changeSwithc==true)
+            //    {
+            //        for (int o=0;o<kangeNamebers.Length;o++)
+            //        {
+            //            if (KBC.kangeRandom!=kangeNamebers[o])
+            //            {
+            //                tt++;
+            //            }
+            //        }
+            //        if (tt>=5)
+            //        {
+            //            changeSwithc = false;
+            //        }
+            //        else if (tt<5)
+            //        {
+            //            KBC.kangeRandom = Random.Range(0, 10);
+            //            tt = 0;
+            //        }
+            //    }
+            //    Debug.Log(KBC.kangeRandom);
+            //    KBC.spriteChangeS(KBC.kangeRandom);
+            //    //kangeNamebers[i] = KBC.kangeRandom;
+            //}
+
+            //for (int v = 0; v < kangiballs.Length; v++)
+            //{
+            //    GameObject go = kangiballs[v];
+            //    KangiPoss[v] = go.transform.position;
+            //    //Debug.Log(KangiPoss[v]);
+            //    KangeBallController kbc = go.GetComponent<KangeBallController>();
+            //    kangeNamebers[v] = kbc.kangeRandom;
+            //    Debug.Log(kangeNamebers[v]);
+            //}
+        }
+    }
+    void newChangeKangeball()//追加したkangeballが他とかぶっていないか確認
+    {
+        changeSwithc = true;
+        int tm = 0,saveK=0,savuK=0;
+        for (int i=0;i<t;i++)
+        {
+            GameObject go = kangiballs[Savekange[i]];
+            KangeBallController kbC = go.GetComponent<KangeBallController>();
+            saveK = kbC.kangeRandom;
+            savuK = kbC.kangeRandom;
+            while (changeSwithc == true)
+            {
+                for(int s = 0; s < kangeNamebers.Length; s++)
+                {
+                    if (kangeNamebers[i]!=saveK&&savuK!=saveK)
+                    {
+                        tm++;
+                    }
+                }
+                if (tm>=5)
+                {
+                    changeSwithc = false;
+                }
+                else if (tm<5)
+                {
+                    saveK = Random.Range(0, 10);
+                    tm = 0;
+                }
+            }
+            kbC.spriteChangeS(saveK);
         }
     }
     // Start is called before the first frame update

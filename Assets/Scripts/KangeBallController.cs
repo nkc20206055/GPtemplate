@@ -84,6 +84,7 @@ public class KangeBallController : MonoBehaviour,Interface
     public void spriteChangeS(int i)
     {
         kangeRandom = i;
+        sr = gameObject.GetComponent<SpriteRenderer>();
         sr.sprite = kangis[i];
     }
     void GODestroy()
