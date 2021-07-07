@@ -109,6 +109,7 @@ public class KangeBallController : MonoBehaviour,Interface
         //Randmukangi();
         sr.sprite = kangis[kangeRandom];
         //Debug.Log(kangeRandom);
+        transform.parent = GameObject.Find("KangeBallGroup").transform;//KangeBallGroupの子オブジェクトにする
     }
 
     // Update is called once per frame
