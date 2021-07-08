@@ -11,6 +11,7 @@ public class BallGeneratorC : MonoBehaviour
     GameObject[] kangiballs = new GameObject[5];
     Vector3[] KangiPoss=new Vector3[5];
     BusyuBallController BBc;
+    KangeBallController KBC;
     public int SaveBusyuNumber, SaveKangiNumber;
     public bool kangeN, spriteR,changeSwithc;
     int t;
@@ -391,11 +392,73 @@ public class BallGeneratorC : MonoBehaviour
             }//過去に作ったほう
 
             //新しく作る方
+            Vector3 PsavePos=Vector3.zero;
             Transform parentTransform = GameObject.Find("KangeBallGroup").transform;//親オブジェクト取得
-            for (int i=0;i<5;i++)
+            for (int i=1;i<5;i++)//※最初のkangeballは変更しなくていいので4回処理をする
             {
-                Transform childTf = parentTransform.GetChild(i);
-                Debug.Log(childTf.transform.position);
+                int namberC = 0,PosC=0;
+                //GameObject kange = parentTransform.GetChild(i);
+                Transform childTf = parentTransform.GetChild(i);//子オブジェクを取得
+                KBC = childTf.GetComponent<KangeBallController>();
+                while (namberC < 4)//kangeballの番号が被らないように変更する
+                {
+                    for (int l = 0; l < 5; l++)
+                    {
+                        Transform Kkange = parentTransform.GetChild(l);
+                        KangeBallController kbc = Kkange.GetComponent<KangeBallController>();
+                        if (i != l&&KBC.kangeRandom!=kbc.kangeRandom)
+                        {
+                            namberC++;
+                        }                   
+                    }
+                    if (namberC < 4)
+                    {
+                        int changeK = Random.Range(0, 10);
+                        KBC.spriteChangeS(changeK);
+                        namberC = 0;
+                    }
+                }//kangeballの番号が被らないように変更する
+
+                float Rx, Ry;
+                Vector3 savP;
+                Rx = childTf.transform.position.x;
+                Ry = childTf.transform.position.y;
+                while (PosC < 4)//kangeballの位置が被らないように変更する
+                {
+                    for (int l = 0; l < 5; l++)
+                    {
+                        Transform Kkange = parentTransform.GetChild(l);
+                        savP = Kkange.transform.position;
+                        if (i != l)
+                        {
+                            if (savP.x - 2f > Rx && savP.x != Rx || savP.x + 2f < Rx && savP.x != Rx|| savP.x != Rx)
+                            {
+                                if (savP.y - 2f > Ry && savP.y != Ry || savP.y + 2f < Ry && savP.y != Ry|| savP.y != Ry)
+                                {
+                                    PosC++;
+                                }
+                                //else
+                                //{
+                                //    PosC = 0;
+                                //}
+                            }
+                            //else
+                            //{
+                            //    PosC = 0;
+                            //}
+                        }
+                    }
+                    if (PosC < 4)
+                    {
+                        Rx = Random.Range(-7, 8);
+                        Ry = Random.Range(6, 15);
+                        PsavePos = new Vector3(Rx, Ry, 0);
+                        PosC = 0;
+                    }
+                }//kangeballの位置が被らないように変更する
+                childTf.transform.position = PsavePos;
+
+                Debug.Log(childTf.transform.position+" "+KBC);
             }
             kangeN = false;
         }
