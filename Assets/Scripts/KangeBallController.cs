@@ -63,6 +63,7 @@ public class KangeBallController : MonoBehaviour,Interface
     {
         Vector3 i = transform.position;
         gd.SavePoint += 50*i.y;
+        gd.purasPoint();
         //Debug.Log(gd.SavePoint);
     }
     void Randmukangi()

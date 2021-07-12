@@ -172,30 +172,70 @@ public class BallGeneratorC : MonoBehaviour
                 //    Debug.Log(/*kangiballs[v] */v+ " " + kangeNamebers[v] + " " + KangiPoss[v]);
                 //}
             }
+
+            Vector3 InsPsaveP = Vector3.zero;
             for (int i=0;i< saveCout; i++)//新しく作ったkangeballのkangeRandomを被らないように再設定
             {
                 int NamberCout=0,PosCout=0;
                 Transform Ikange= parentTransform.GetChild(Notkange);//子オブジェクを取得
                 KBC = Ikange.GetComponent<KangeBallController>();//取得した子オブジェクトのC＃スクリプトを取得
-                Debug.Log(KBC.kangeRandom);
-                while (NamberCout < 4)
+
+                while (NamberCout < 4)//作った漢字が被らないようにする処理
                 {
                     for (int c = 0; c < 5; c++)
                     {
                         KangeBallController subK = parentTransform.GetChild(c).GetComponent<KangeBallController>();
-                        if (i != c && KBC.kangeRandom != subK.kangeRandom)
+                        if (Notkange != c && KBC.kangeRandom != subK.kangeRandom)
                         {
                             NamberCout++;
-                        }
-                        if (NamberCout < 4)
+                        }                    
+                    }
+                    if (NamberCout < 4)
+                    {
+                        int changeK = Random.Range(0, 10);
+                        KBC.spriteChangeS(changeK);
+                        NamberCout = 0;
+                    }
+                }//作った漢字が被らないようにする処理
+
+                float InsRX, InsRY;
+                Vector3 InsP;
+                InsRX = Ikange.transform.position.x;
+                InsRY = Ikange.transform.position.y;
+                while (PosCout<4)
+                {
+                    for (int l = 0; l < 5; l++)
+                    {
+                        Transform Kkange = parentTransform.GetChild(l);
+                        InsP = Kkange.transform.position;
+
+                        if (i != l)
                         {
-                            int changeK = Random.Range(0, 10);
-                            KBC.spriteChangeS(changeK);
-                            NamberCout = 0;
+                            if (InsP.x != InsRX && InsP.y != InsRY)
+                            {
+                                PosCout++;
+                                if (PosCout >= 4)
+                                {
+                                    InsPsaveP = new Vector3(InsRX, InsRY, 0);
+                                }
+                            }
+                            else
+                            {
+                                PosCout = 0;
+                            }
                         }
                     }
-                }
-                Debug.Log(KBC.kangeRandom);
+                    if (PosCout < 4)
+                    {
+                        InsRX = Mathf.Floor(Random.Range(-7, 8));
+                        InsRY = Mathf.Floor(Random.Range(6, 15));
+                        InsPsaveP = new Vector3(InsRX, InsRY, 0);
+                        PosCout = 0;
+                    }
+                }//作った漢字の位置が被らないようにする処理
+                Ikange.transform.position = InsPsaveP;
+
+                Notkange++;
             }
 
             spriteR = false;
