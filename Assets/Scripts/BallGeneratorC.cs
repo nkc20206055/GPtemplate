@@ -10,12 +10,12 @@ public class BallGeneratorC : MonoBehaviour
     GameObject[] busyuballs = new GameObject[5];//生成したBusyuBallを保存する配列
     GameObject[] kangiballs = new GameObject[5];
     Vector3[] KangiPoss=new Vector3[5];
-    BusyuBallController BBc;
+    BusyuBallController BBc,SubC;
     KangeBallController KBC;
-    Transform parentTransform;
+    Transform busyugrup,parentTransform;
     public int SaveBusyuNumber, SaveKangiNumber;
-    public bool kangeN, spriteR,changeSwithc;
-    int t, Coutkange, saveCout, Notkange;
+    public bool BusyuRS,kangeN, spriteR,changeSwithc;
+    int t,busyuCCount, Coutkange, saveCout, Notkange;
     int[] Savekange = new int[5];
     //private bool 
     //Vector3 busyuPos;
@@ -46,6 +46,7 @@ public class BallGeneratorC : MonoBehaviour
                 }
                 //Debug.Log(BBc.suwipSwitch);
             }
+            BusyuRS = true;
         }
 
     }
@@ -152,12 +153,42 @@ public class BallGeneratorC : MonoBehaviour
                 Inskange.transform.position = new Vector3(IPx, IPy, 0);
                 Notkange--;
             }
-            Debug.Log(saveCout);
+            //Debug.Log(saveCout);
             spriteR = true;
         }
     }
     void kBallNamberandPosSave()//KangeBallの座標と変化したときの番号を再設定
     {
+        if (BusyuRS == true)
+        {
+            int savubusyuN=0;
+            busyuCCount = 0;
+            Transform busyuGrups = busyugrup.GetChild(4);//子オブジェクトの最後列のいるのを獲得
+            BBc = busyuGrups.GetComponent<BusyuBallController>();
+            savubusyuN = BBc.RandomBusyu;
+            //Debug.Log(savubusyuN);
+            while (busyuCCount<3) {
+                for (int i = 0; i < 3; i++)
+                {
+                    Transform h = busyugrup.GetChild(i);
+                    SubC = h.GetComponent<BusyuBallController>();
+                    if (savubusyuN != SubC.RandomBusyu)
+                    {
+                        Debug.Log(h+" "+SubC.RandomBusyu);
+                        busyuCCount++;
+                    }
+                }
+                if (busyuCCount<3)
+                {
+                    savubusyuN = Random.Range(0, 5);
+                    busyuCCount = 0;
+                }
+            }
+            BBc.ChangeSprite(savubusyuN);
+            
+            BusyuRS = false;
+        }
+
         if (spriteR == true)
         {
             {
@@ -321,7 +352,8 @@ public class BallGeneratorC : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        spriteR = false; 
+        spriteR = false;
+        busyugrup = GameObject.Find("BusyuBallGroup").transform;//親オブジェクト取得
         //BusyuBallController BBC = null;
         //busyuPos = new Vector3(0, 0, 0);
         float busyuPosx = 0;

@@ -710,7 +710,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7040836138122282188, guid: 398adea745b83494697908fb1292affe,
+  m_Sprite: {fileID: -1843028302627794106, guid: f02daa976cc7a6d4eab566aabbd8379c,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -730,8 +730,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 854043027}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 6.6367617, z: -1}
-  m_LocalScale: {x: 1.51, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 7.13, z: -1}
+  m_LocalScale: {x: 1.51, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -876,6 +876,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 871739626}
   m_CullTransparentMesh: 0
+--- !u!1 &1379531020
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1379531021}
+  m_Layer: 0
+  m_Name: BusyuBallGroup
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1379531021
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1379531020}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.8488197, y: 4.8707066, z: -0.033952165}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1667278747
 GameObject:
   m_ObjectHideFlags: 0
@@ -912,6 +942,7 @@ MonoBehaviour:
   kangeNamebers: 0000000000000000000000000000000000000000
   SaveBusyuNumber: 0
   SaveKangiNumber: 0
+  BusyuRS: 0
   kangeN: 0
   spriteR: 0
   changeSwithc: 0
@@ -1186,7 +1217,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1888661250}
   m_Direction: 0
   m_MinValue: 1
-  m_MaxValue: 100
+  m_MaxValue: 60
   m_WholeNumbers: 0
   m_Value: 1
   m_OnValueChanged:

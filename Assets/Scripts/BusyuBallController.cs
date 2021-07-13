@@ -14,6 +14,13 @@ public class BusyuBallController : MonoBehaviour
     public bool suwipSwitch;
     private bool DestroySwitch;
     private bool Mousetouch;
+
+    public void ChangeSprite(int i)
+    {
+        Debug.Log(busyuS[i]);
+        RandomBusyu = i;
+        SR.sprite = busyuS[i];
+    }
     void RBusyu()
     {
         while (BGC.SaveBusyuNumber == RandomBusyu)
@@ -72,6 +79,7 @@ public class BusyuBallController : MonoBehaviour
         //Debug.Log(RandomBusyu);
         RDestroyPos = new Vector2(9f, 17f);
         LDestroyPos = new Vector2(-9f,-1f);
+        transform.parent = GameObject.Find("BusyuBallGroup").transform;//BusyuBallGroupの子オブジェクトにする
 
     }
 

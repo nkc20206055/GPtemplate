@@ -11,7 +11,7 @@ public class gamedirctor : MonoBehaviour
     public void purasPoint()
     {
         t.text = SavePoint.ToString();
-        if (time<90) {
+        if (time<50) {
             time += 10;
         }
     }
@@ -19,7 +19,7 @@ public class gamedirctor : MonoBehaviour
     void Start()
     {
         float MaxS = 100;
-        time = 100;
+        time = 60;
         SavePoint = 0;
         t = GameObject.Find("PointText").GetComponent<Text>();
         Timeslider = GameObject.Find("TimeSlider").GetComponent<Slider>();
