@@ -33,5 +33,9 @@ public class gamedirctor : MonoBehaviour
         time -= 1f* Time.deltaTime;
         Timeslider.value = time;
         //t.text = SavePoint.ToString();
+        if (Timeslider.value<=0)
+        {
+            Debug.Log("ゲームオーバー");
+        }
     }
 }
