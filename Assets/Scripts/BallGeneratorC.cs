@@ -12,6 +12,7 @@ public class BallGeneratorC : MonoBehaviour
     Vector3[] KangiPoss=new Vector3[5];
     BusyuBallController BBc,SubC;
     KangeBallController KBC;
+    gamedirctor gd;
     Transform busyugrup,parentTransform;
     public int SaveBusyuNumber, SaveKangiNumber;
     public bool BusyuRS,kangeN, spriteR,changeSwithc;
@@ -353,6 +354,7 @@ public class BallGeneratorC : MonoBehaviour
     void Start()
     {
         spriteR = false;
+        gd = GameObject.Find("GameDirector").GetComponent<gamedirctor>();
         busyugrup = GameObject.Find("BusyuBallGroup").transform;//親オブジェクト取得
         //BusyuBallController BBC = null;
         //busyuPos = new Vector3(0, 0, 0);
@@ -532,9 +534,11 @@ public class BallGeneratorC : MonoBehaviour
         }
         kBallNamberandPosSave();
 
-        busyuBallController();
-        kangeBallController();
-        //kBallNamberandPosSave();
+        if (gd.GameSwicth==true) {
+            busyuBallController();
+            kangeBallController();
+            //kBallNamberandPosSave();
+        }
 
     }
 }
