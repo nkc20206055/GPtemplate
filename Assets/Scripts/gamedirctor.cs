@@ -8,6 +8,7 @@ public class gamedirctor : MonoBehaviour
 {
     [SerializeField] GameObject owariText;
     [SerializeField] GameObject EndScores;
+    public GameObject yarinaosiBottan;
     GameObject GameUI,ScoreBackGround,StratGO;
     Text t,EndScore,StratText;
     Slider Timeslider;
@@ -63,6 +64,10 @@ public class gamedirctor : MonoBehaviour
         if (time >= 0 && StratSwicth == false) {
             time -= 1f * Time.deltaTime;
             Timeslider.value = time;
+            if (time<55)
+            {
+                yarinaosiBottan.SetActive(false);
+            }
             //t.text = SavePoint.ToString();
         }else if (time<=0)
         {
