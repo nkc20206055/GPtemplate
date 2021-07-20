@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: -7023962969113798074, guid: 398adea745b83494697908fb1292affe,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -98,11 +98,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   busyuS:
-  - {fileID: -7023962969113798074, guid: 398adea745b83494697908fb1292affe, type: 3}
-  - {fileID: -6512784386928660277, guid: 398adea745b83494697908fb1292affe, type: 3}
-  - {fileID: 2303844853823491059, guid: 398adea745b83494697908fb1292affe, type: 3}
-  - {fileID: 621097684425295106, guid: 398adea745b83494697908fb1292affe, type: 3}
-  - {fileID: 3172013536658256978, guid: 398adea745b83494697908fb1292affe, type: 3}
+  - {fileID: -1041806905383681731, guid: 756ac07bb457bf74a8e22a1868a4fd07, type: 3}
+  - {fileID: 7921441102030988817, guid: 4652feb3d2099d74aae4dc718e15e17e, type: 3}
+  - {fileID: 1053682886896934213, guid: bd1417aeb392b934cbf086ce416fbdda, type: 3}
+  - {fileID: 4016297082181705811, guid: c37b6b9583906904eb9b9b6ba0903c21, type: 3}
+  - {fileID: 4750113237643533654, guid: 5ada600b32b179a449d6bf8b186fbb97, type: 3}
   RandomBusyu: 0
   suwipSwitch: 0
 --- !u!58 &8284814906655581252

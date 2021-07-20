@@ -425,6 +425,7 @@ public class BallGeneratorC : MonoBehaviour
             //Debug.Log(KangiPoss[i]);
         }
 
+        parentTransform = GameObject.Find("KangeBallGroup").transform;//親オブジェクト取得
         kangeN = true;
 
         //Object[] allGameObject = Resources.FindObjectsOfTypeAll(typeof(GameObject));
